@@ -17,7 +17,6 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='product_creator')
     title = models.CharField(max_length=255)
-    product_type = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     size = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/')
