@@ -21,7 +21,7 @@ class Product(models.Model):
     size = models.IntegerField(default=0)
     image = models.ImageField(upload_to='images/')
     slug = models.SlugField(max_length=255, unique=True)
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     stock = models.IntegerField(default=0)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
