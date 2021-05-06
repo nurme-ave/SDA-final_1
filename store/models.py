@@ -10,6 +10,15 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
+    def get_absolute_url(self):
+        """
+        - get_absolute_url() will return a URL string that would point to this model's view
+        - Notes for reverse():
+          1st parameter -> URL we wish to use
+          2nd parameter -> whatever item it is we currently want to view
+        """
+        return reverse('store:category_list', args=[self.slug])
+
     def __str__(self):
         return self.name
 
