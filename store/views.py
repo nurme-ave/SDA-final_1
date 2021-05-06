@@ -9,7 +9,7 @@ def categories(request):
 
 
 def all_products(request):
-    products = Product.objects.all()
+    products = Product.objects.all.filter(is_active=True, in_stock=True)
     return render(request, 'store/home.html', {'products': products})
 
 
