@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.views.categories',   # for every page that we view we have access to the 'categories' view
+                'basket.context_processors.basket',
             ],
         },
     },
