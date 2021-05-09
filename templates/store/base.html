@@ -43,12 +43,12 @@
                     <a type="button" role="button" href="{% url 'basket:basket_summary' %}"
                         class="btn btn btn-outline-secondary ms-5"> <!-- ms-5 creates space between buttons Search and Basket -->
 
-                        {% with total_qty=basket|length %}  <!-- context manager -->
+                        {% with total_qty=basket|length total_price=basket.get_total_price %}  <!-- context manager -->
                             <div id="basket-qty" class="d-inline-flex">
                                 {% if total_qty > 0 %}
-                                    {{ total_qty }}
+                                    {{ total_qty }} item(s) - €{{ total_price }} -
                                 {% else %}
-                                    0
+                                    0 items - €0.00 -
                                 {% endif %}
                             </div>
                         {% endwith %}

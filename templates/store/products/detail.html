@@ -62,7 +62,7 @@
             action: 'post',
         },
         success: function (json) {
-            document.getElementById("basket-qty").innerHTML = json.qty
+            document.getElementById("basket-qty").innerHTML = `${json.qty} item(s) - €${json.total} - `
         },
         error: function (xhr, errmsg, err) {}
     });

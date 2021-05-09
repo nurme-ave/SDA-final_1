@@ -19,5 +19,6 @@ def basket_add(request):
         basket.add(product=product, qty=product_qty)    # send/save the product data and quantity data into the session
 
         basketqty = basket.__len__()
-        response = JsonResponse({'qty': basketqty})     # send back the new updated basket quantity to the user
+        baskettotal = basket.get_total_price()
+        response = JsonResponse({'qty': basketqty, 'total': baskettotal})     # send back the new updated basket quantity to the user
         return response
