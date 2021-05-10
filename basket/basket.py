@@ -24,23 +24,23 @@ class Basket:
         """Tell Django explicitly that the session has been modified."""
         self.session.modified = True
 
-    def add(self, product, qty):
+    def add(self, product_data, qty):
         """Adding and updating the users basket session data."""
-        product_id = str(product.id)
+        product_id = str(product_data.id)
 
         if product_id not in self.basket:
-            self.basket[product_id] = {'price': str(product.price), 'qty': int(qty)}
+            self.basket[product_id] = {'price': str(product_data.price), 'qty': int(qty)}
         else:
             self.basket[product_id]['qty'] += int(qty)
 
         self.save()
 
-    def update_quantity_or_remove_item(self, product, qty=None, update=None):
+    def update_quantity_or_remove_item(self, product_id, qty=None, update=None):
         """
         Update values in session data or remove an item from the basket based on the
         'update' argument which is passed in from views.basket_action.
         """
-        product_id = str(product)
+        product_id = str(product_id)
 
         if product_id in self.basket and update:
             self.basket[product_id]['qty'] = qty
