@@ -40,8 +40,8 @@
                   class="btn btn-outline-secondary btn-sm">
                   Update
                 </button>
-                <button type="button" id="delete-button" value="{{product.id}}"
-                  class="btn btn-outline-secondary btn-sm">
+                <button type="button" id="delete-button" data-index="{{product.id}}"
+                  class="btn btn-outline-secondary btn-sm delete-button">
                   Delete
                 </button>
               </div>
@@ -59,13 +59,13 @@
 </main>
 
 <script>
-    $(document).on('click', '#delete-button', function (e) {
+    $(document).on('click', '.delete-button', function (e) {
     e.preventDefault();
     $.ajax({
         type: 'POST',
         url: "{% url 'basket:basket_delete' %}",
         data: {
-            productid: $('#add-button').val(),
+            productid: $(this).data('index'),
             csrfmiddlewaretoken: "{{ csrf_token }}",
             action: 'post',
         },
