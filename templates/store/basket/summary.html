@@ -70,11 +70,11 @@
     var prodid = $(this).data('index');
     $.ajax({
         type: 'POST',
-        url: "{% url 'basket:basket_delete' %}",
+        url: "{% url 'basket:basket_action' %}",
         data: {
             productid: $(this).data('index'),
             csrfmiddlewaretoken: "{{ csrf_token }}",
-            action: 'post',
+            action: 'delete',
         },
         success: function (json) {
           $('.product-item[data-index="' + prodid + '"]').remove();
@@ -90,12 +90,12 @@
     var prodid = $(this).data('index');
     $.ajax({
         type: 'POST',
-        url: "{% url 'basket:basket_update' %}",
+        url: "{% url 'basket:basket_action' %}",
         data: {
             productid: $(this).data('index'),
             productqty: $('#select' + prodid + ' option:selected').text(),
             csrfmiddlewaretoken: "{{ csrf_token }}",
-            action: 'post',
+            action: 'update',
         },
         success: function (json) {
           document.getElementById("subtotal").innerHTML = json.total;

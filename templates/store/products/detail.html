@@ -60,12 +60,12 @@
     e.preventDefault();
     $.ajax({
         type: 'POST',
-        url: "{% url 'basket:basket_add' %}",
+        url: "{% url 'basket:basket_action' %}",
         data: {
             productid: $('#add-button').val(),
             productqty: $('#select option:selected').text(),
             csrfmiddlewaretoken: "{{ csrf_token }}",
-            action: 'post',
+            action: 'add',
         },
         success: function (json) {
             document.getElementById("basket-qty").innerHTML = `${json.qty} item(s) - €${json.total} - `
