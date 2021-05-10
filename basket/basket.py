@@ -35,6 +35,20 @@ class Basket:
 
         self.save()
 
+    def update_quantity_or_remove_item(self, product, qty=None, update=None):
+        """
+        Update values in session data or remove an item from the basket based on the
+        'update' argument which is passed in from views.basket_action.
+        """
+        product_id = str(product)
+
+        if product_id in self.basket and update:
+            self.basket[product_id]['qty'] = qty
+        else:
+            del self.basket[product_id]
+
+        self.save()
+
     def __iter__(self):
         """Collect the product_id in the session data to query the database and return products."""
         product_ids = self.basket.keys()  # iterate over the keys in the basket and collect them
@@ -57,22 +71,3 @@ class Basket:
 
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
-
-    def delete(self, product):
-        """Delete item from session data."""
-        product_id = str(product)
-
-        if product_id in self.basket:
-            del self.basket[product_id]
-            self.save()
-
-    def update(self, product, qty):
-        """Update values in session data."""
-        product_id = str(product)
-
-        if product_id in self.basket:
-            self.basket[product_id]['qty'] = qty
-
-        self.save()
-
-

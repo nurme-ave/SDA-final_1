@@ -21,12 +21,12 @@ def basket_action(request):
 
     elif request.POST.get('action') == 'delete':
         product_id = int(request.POST.get('productid'))
-        basket.delete(product=product_id)
+        basket.update_quantity_or_remove_item(product=product_id, update=False)
 
     elif request.POST.get('action') == 'update':
         product_id = int(request.POST.get('productid'))
         product_qty = int(request.POST.get('productqty'))
-        basket.update(product=product_id, qty=product_qty)
+        basket.update_quantity_or_remove_item(product=product_id, qty=product_qty, update=True)
 
     basket_qty = basket.__len__()
     basket_total = basket.get_total_price()
