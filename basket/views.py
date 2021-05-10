@@ -22,3 +22,15 @@ def basket_add(request):
         baskettotal = basket.get_total_price()
         response = JsonResponse({'qty': basketqty, 'total': baskettotal})     # send back the new updated basket quantity to the user
         return response
+
+
+def basket_delete(request):
+    basket = Basket(request)  # grab the session data
+    if request.POST.get('action') == 'post':  # if the request received from the AJAX is a post request and action == post
+        product_id = int(request.POST.get('productid'))  # collect the product id
+        basket.delete(product=product_id)  # send/save the product data and quantity data into the session
+
+        basketqty = basket.__len__()
+        baskettotal = basket.get_total_price()
+        response = JsonResponse({'qty': basketqty, 'total': baskettotal})  # send back the new updated basket quantity to the user
+        return response

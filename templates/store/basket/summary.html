@@ -8,7 +8,7 @@
     <h1 class="h5">Shopping basket</h1>
     {% for item in basket %}
     {% with product=item.product %}
-    <div data-index="{{product.id}}" class="row mb-4 border product-item">
+    <div class="row mb-4 border product-item">
       <div class="col-md-3 col-lg-2 order-md-first bg-light">
         <img class="img-fluid mx-auto d-block" width="120px" alt="Responsive image" src="{{ product.image.url }}">
       </div>
@@ -36,12 +36,12 @@
                   <option value="">3</option>
                   <option value="">4</option>
                 </select>
-                <button type="button" id="update-button" data-index="{{product.id}}"
-                  class="btn btn-outline-secondary btn-sm update-button">
+                <button type="button" id="add-button" value="{{product.id}}"
+                  class="btn btn-outline-secondary btn-sm">
                   Update
                 </button>
-                <button type="button" id="delete-button" data-index="{{product.id}}"
-                  class="btn btn-outline-secondary btn-sm delete-button">
+                <button type="button" id="delete-button" value="{{product.id}}"
+                  class="btn btn-outline-secondary btn-sm">
                   Delete
                 </button>
               </div>
@@ -57,4 +57,24 @@
     </div>
   </div>
 </main>
+
+<script>
+    $(document).on('click', '#delete-button', function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'basket:basket_delete' %}",
+        data: {
+            productid: $('#add-button').val(),
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            action: 'post',
+        },
+        success: function (json) {
+            document.getElementById("basket-qty").innerHTML = `${json.qty} item(s) - €${json.total} - `
+        },
+        error: function (xhr, errmsg, err) {}
+    });
+})
+</script>
+
 {% endblock %}
