@@ -18,19 +18,19 @@
         </a>
         <div class="border">
             <div class="col border-bottom">
-                <div class="row p-3">
+                <div class="row p-2">
                     <div class="col-6">Price per item</div>
-                    <div class="col-6 text-end"><span class="h4 fw-bold">€{{ product.price }}</span></div>
+                    <div class="col-6 text-end"><span class="h4">€{{ product.price }}</span></div>
                 </div>
             </div>
             <div class="col border-bottom">
-                <div class="row p-3">
+                <div class="row p-2">
                     <div class="col-6">Color</div>
                     <div class="col-6 text-end"><span class="h4">{{ product.get_color_display }}</span></div>
                 </div>
             </div>
           <div class="col">
-            <div class="row p-3">
+            <div class="row p-2">
               <div class="col-12">
                 <label for="select">Qty</label>
                 <select id="select{{product.id}}">
@@ -43,11 +43,11 @@
                   <option value="">4</option>
                 </select>
                 <button type="button" id="update-button" data-index="{{product.id}}"
-                  class="btn btn-outline-secondary btn-sm update-button">
+                  class="btn btn-outline-secondary btn-sm ms-3 update-button">
                   Update
                 </button>
                 <button type="button" id="delete-button" data-index="{{product.id}}"
-                  class="btn btn-outline-secondary btn-sm delete-button">
+                  class="btn btn-outline-secondary btn-sm ms-1 delete-button">
                   Delete
                 </button>
               </div>
