@@ -25,23 +25,18 @@ class Category(models.Model):
 
 class Product(models.Model):
 
-    WHITE = 'wht'
-    BLACK = 'blc'
-    RED = 'red'
-    BLUE = 'blu'
-
     COLOR_CHOICES = [
-        (WHITE, 'White'),
-        (BLACK, 'Black'),
-        (RED, 'Red'),
-        (BLUE, 'Blue'),
+        ('WHITE', 'White'),
+        ('BLACK', 'Black'),
+        ('RED', 'Red'),
+        ('BLUE', 'Blue'),
     ]
 
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='product_creator')
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    color = models.CharField(max_length=20, choices=COLOR_CHOICES, default=WHITE)
+    color = models.CharField(max_length=20, choices=COLOR_CHOICES)
     image = models.ImageField(upload_to='images/', default='images/default.png')
     slug = models.SlugField(max_length=255, unique=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)
