@@ -21,7 +21,7 @@ def basket_action(request):
 
     elif request.POST.get('action') == 'delete':
         product_id = int(request.POST.get('productid'))
-        basket.update_quantity_or_remove_item(product_id=product_id, update=False)
+        basket.update_quantity_or_remove_item(product_id=product_id)
 
     elif request.POST.get('action') == 'update':
         product_id = int(request.POST.get('productid'))
