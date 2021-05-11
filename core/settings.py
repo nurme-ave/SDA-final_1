@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # My apps
     'store',
     'basket',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,5 @@ MEDIA_URL = '/media/'
 # connect base directory up to a media to build the actual link to the media folder
 # so that Django can access the folder
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+LOGIN_REDIRECT_URL = '/'

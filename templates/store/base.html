@@ -23,7 +23,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item dropdown">
+
+                        <li class="nav-item dropdown ms-5">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
@@ -38,10 +39,12 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+                    <form class="d-inline-flex">
+                        <input class="form-control me-2 ms-5" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
+
                     <a type="button" role="button" href="{% url 'basket:basket_summary' %}"
                         class="btn btn btn-outline-secondary ms-5"> <!-- ms-5 creates space between buttons Search and Basket -->
 
@@ -62,6 +65,22 @@
                         </svg>
                         Basket
                     </a>
+
+                    <div>
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item dropdown ms-4">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Login / Sign up
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'accounts:login' %}">Login</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'accounts:signup' %}">Sign up</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </nav>
