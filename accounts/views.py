@@ -13,3 +13,5 @@ class MySignUpView(CreateView):
 
 class MyLoginView(LoginView):
     template_name = 'accounts/form.html'
+
+

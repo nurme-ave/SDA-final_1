@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import MyLoginView, MySignUpView
 
+
 app_name = 'accounts'
 
 urlpatterns = [
