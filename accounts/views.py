@@ -6,12 +6,12 @@ from accounts.forms import SignUpForm
 
 
 class MySignUpView(CreateView):
-    template_name = 'accounts/form.html'
+    template_name = 'accounts/register.html'
     form_class = SignUpForm
     success_url = reverse_lazy("accounts:login")
 
 
 class MyLoginView(LoginView):
-    template_name = 'accounts/form.html'
+    template_name = 'accounts/login.html'
 
 

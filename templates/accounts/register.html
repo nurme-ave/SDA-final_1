@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+body {
+  padding-top: 7.0rem;
+}
+</style>
+
+<div class="d-flex justify-content-center align-items-center container">
+  <div class="mb-3 col-sm-5 card p-3 bg-light">
+    <form method="post">
+      {% csrf_token %}
+      <h4 class="text-center">Sign up today and enjoy your discount!</h4>
+      <br>
+      {{ form.as_p }}
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit">Sign Me Up!</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
