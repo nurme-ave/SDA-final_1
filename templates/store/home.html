@@ -5,6 +5,7 @@
 {% block content %}
 <main>
 
+  {% if not user.is_authenticated %}
   <section class="py-5 text-center container">
     <div class="row py-lg-3">
       <div class="col-lg-6 col-md-8 mx-auto">
@@ -17,6 +18,21 @@
       </div>
     </div>
   </section>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+  <section class="py-5 text-center container">
+    <div class="row py-lg-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="h1 fw-bold">Nice to see you, {{ user.first_name }}!</h1>
+        <p class="lead text-muted">Check out your personalized offers:</p>
+        <p>
+          <a href="#" class="btn btn-primary my-2">Let's go!</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  {% endif %}
 
   <div class="album py-5 bg-light">
     <div class="container">
