@@ -52,7 +52,11 @@
                 <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
               </p>
               <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">9min read</small>
+              <div class="btn-group">
+                <div>
+                  <a href="{{ product.get_absolute_url }}" role="button" class="btn btn-primary btn-sm">Details</a>
+                </div>
+              </div>
               </div>
             </div>
           </div>

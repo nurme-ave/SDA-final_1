@@ -28,4 +28,4 @@ def customer_password_change_success(request):
 
 class CustomerProfileView(DetailView):
     template_name = 'accounts/profile.html'
-    model = Profile
+    # model = Profile or User ?
