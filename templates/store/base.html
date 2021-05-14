@@ -37,7 +37,11 @@
                                 </li>
                                 {% endfor %}
                             </ul>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link ms-4" aria-current="page" href="#">Profile</a>
                         </li>
+                        {% endif %}
                     </ul>
 
                     <form class="d-inline-flex">

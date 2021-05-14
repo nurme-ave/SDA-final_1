@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+body {
+  padding-top: 7.0rem;
+}
+</style>
+
+<p>Here are the details:</p>
+<h3>{{ object.first_name }}</h3>
+<h3>{{ object.last_name }}</h3>
+<h3>{{ object.country }}</h3>
+
+
+
+{% endblock %}

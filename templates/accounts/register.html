@@ -14,6 +14,11 @@ body {
   <div class="mb-3 col-sm-5 card p-3 bg-light">
     <form method="post">
       {% csrf_token %}
+      <div class="text-center">
+        Already a registered user?
+        <a href="{% url 'accounts:login' %}">Log in</a>
+      </div>
+      <br>
       <h4 class="text-center">Sign up today and enjoy your discount!</h4>
       <br>
       {{ form.as_p }}

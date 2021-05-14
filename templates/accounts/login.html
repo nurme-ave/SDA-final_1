@@ -15,9 +15,15 @@ body {
       {% csrf_token %}
       <h4 class="text-center">Login page</h4>
       <br>
-      {{ form.as_p }}
+      <p><label for="id_username">Username:</label> <input type="text" class="form-control" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username"></p>
+      <p><label for="id_password">Password:</label> <input type="password" class="form-control" name="password" autocomplete="current-password" required id="id_password"></p>
       <div class="text-center">
         <button class="btn btn-primary" type="submit">Log In</button>
+      </div>
+      <br>
+      <div class="text-center">
+          Not registered yet?
+          <a href="{% url 'accounts:signup' %}">Sign up</a>
       </div>
     </form>
   </div>
