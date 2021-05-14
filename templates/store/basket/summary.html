@@ -58,15 +58,33 @@
     </div>
     {% endwith %}
     {% endfor %}
-    <div class="col-12 text-end">
-      <div class="h5 fw-bold">Subtotal: €<div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div></div>
-    </div>
-    <div class="col-12 text-end">
-        <hr class="my-4">
-        <button class="w-20 btn btn-primary" type="submit">Continue to checkout</button>
-    </div>
+
+  <div>
+      {% with total_qty=basket|length %}
+      {% if total_qty > 0 %}
+
+        <div class="col-12 text-end">
+          <div class="h5 fw-bold">
+              Subtotal: €
+              <div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div>
+          </div>
+        </div>
+        <div class="col-12 text-end">
+            <hr class="my-4">
+            <button class="w-20 btn btn-primary" type="submit">Continue to checkout</button>
+        </div>
+
+      {% else %}
+        <br>
+        Your basket is empty :-(
+
+      {% endif %}
   </div>
+  {% endwith %}
+
+</div>
 </main>
+
 
 <script>
     $(document).on('click', '.delete-button', function (e) {
