@@ -76,7 +76,7 @@
                                 {% if user.is_authenticated %}
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    You are logged in
+                                    You are logged in as {{ user.username|upper }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
