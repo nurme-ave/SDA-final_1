@@ -4,7 +4,6 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
 
 from accounts.forms import SignUpForm
-from accounts.models import Profile
 
 
 class MySignUpView(CreateView):
