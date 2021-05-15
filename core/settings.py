@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'store',
     'basket',
     'accounts',
+    'orders',
     'django_countries',
 ]
 
