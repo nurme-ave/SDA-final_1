@@ -11,18 +11,14 @@ class Basket:
 
         # first of all, we need to check if the user already has a session/cookie or not
         # if the user has a session we get the key and store that key in the variable 'basket'
-        basket = self.session.get(settings.BASKET_SESSION_ID)
+        basket = self.session.get('session_key')
 
-        if settings.BASKET_SESSION_ID not in request.session:
-            basket = self.session[settings.BASKET_SESSION_ID] = {}
+        # if the user does not have a session we will need to build one for the user
+        if 'session_key' not in request.session:
+            basket = self.session['session_key'] = {}
+
+        # return the data of the session and store it in self.basket to make the variable available
         self.basket = basket
-
-        # # if the user does not have a session we will need to build one for the user
-        # if 'session_key' not in request.session:
-        #     basket = self.session['session_key'] = {}
-        #
-        # # return the data of the session and store it in self.basket to make the variable available
-        # self.basket = basket
 
     def save(self):
         """Tell Django explicitly that the session has been modified."""
@@ -78,5 +74,5 @@ class Basket:
 
     def clear(self):
         # Remove basket from session
-        del self.session[settings.BASKET_SESSION_ID]
+        del self.session['session_key']
         self.save()

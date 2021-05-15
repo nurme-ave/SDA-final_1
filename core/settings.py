@@ -143,8 +143,5 @@ MEDIA_URL = '/media/'
 # so that Django can access the folder
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-# Basket session ID
-BASKET_SESSION_ID = 'basket'
-
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
