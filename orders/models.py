@@ -21,10 +21,10 @@ class Order(models.Model):
     order_status = models.CharField(max_length=2, choices=ORDER_STATUS_CHOICES, default='NP')
 
     class Meta:
-        ordering = ('-order_date',)
+        ordering = ('client',)
 
     def __str__(self):
-        return str(self.order_date)
+        return f'User: {self.client}'
 
 
 class OrderItem(models.Model):

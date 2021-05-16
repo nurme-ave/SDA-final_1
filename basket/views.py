@@ -28,7 +28,6 @@ def basket_action(request):
                 active_basket=True,
             )
 
-
     basket = Basket(request)  # grab the session data
 
     if request.POST.get(
