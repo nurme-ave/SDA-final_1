@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 from store.models import Product
@@ -13,9 +15,9 @@ class Order(models.Model):
     )
 
     client = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='orders')
-    order_date = models.DateField()
-    active_basket = models.BooleanField
-    invoice_total = models.DecimalField(max_digits=7, decimal_places=2)
+    order_date = models.DateField(default=datetime.date.today)
+    active_basket = models.BooleanField()
+    invoice_total = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     order_status = models.CharField(max_length=2, choices=ORDER_STATUS_CHOICES, default='NP')
 
     class Meta:
@@ -30,3 +32,6 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
     price = models.DecimalField(max_digits=5, decimal_places=2)
     quantity = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.order} - {self.product} - {self.price} - {self.quantity}'
