@@ -40,8 +40,8 @@ def basket_action(request):
         basket.add(product_data=product_data,
                    qty=product_qty)  # send/save the product data and quantity data into the session
 
-        # if active_order:
-        #     add_item_to_order(active_order, product_id, product_qty)
+        if active_order:
+            add_item_to_order(active_order, product_id, product_qty)
 
     elif request.POST.get('action') == 'delete':
         product_id = int(request.POST.get('productid'))

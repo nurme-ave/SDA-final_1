@@ -29,9 +29,6 @@ class CustomerLoginView(LoginView):
         my_basket = Basket(self.request)  # this is the offline basket (before logging in)
         print(my_basket.basket)
 
-        # if len(my_basket) == 0 and not Order.objects.filter(client=profile, active_basket=True).exists():
-        #     return result
-
         if Order.objects.filter(client=profile, active_basket=True).exists():
             active_order = Order.objects.get(client=profile, active_basket=True)
         else:
@@ -45,25 +42,18 @@ class CustomerLoginView(LoginView):
 
         order_items = active_order.items.all()
 
-        # my_basket_copy = my_basket.basket.copy()   # make a copy of the products + quantities in that offline basket
         my_basket_copy = {}
         for key in my_basket.basket:
-            my_basket_copy[key] = my_basket.basket[key]
-
-        print(type(my_basket.basket))
-        print(my_basket_copy)
+            my_basket_copy[key] = my_basket.basket[key].copy()
 
         for item in order_items:    # update the session basket from the database
             my_basket.add(item.product, item.quantity)
-        print(my_basket_copy)
 
         for product_id in my_basket_copy:   # update the database with the copy of the offline basket
             my_product = Product.objects.get(id=int(product_id))
             if OrderItem.objects.filter(product=my_product, order=active_order).exists():
                 item = OrderItem.objects.get(product=my_product, order=active_order)
-                item.quantity = my_basket_copy[product_id]['qty']
-                print(item.quantity)
-                print(my_basket_copy[product_id]['qty'])
+                item.quantity += my_basket_copy[product_id]['qty']
                 item.save()
             else:
                 OrderItem.objects.create(
