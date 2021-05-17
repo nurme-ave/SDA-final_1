@@ -27,7 +27,6 @@ class CustomerLoginView(LoginView):
         user = self.request.user
         profile = Profile.objects.get(user=user)
         my_basket = Basket(self.request)  # this is the offline basket (before logging in)
-        print(my_basket.basket)
 
         if Order.objects.filter(client=profile, active_basket=True).exists():
             active_order = Order.objects.get(client=profile, active_basket=True)
