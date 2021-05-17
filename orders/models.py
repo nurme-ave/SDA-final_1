@@ -24,7 +24,7 @@ class Order(models.Model):
         ordering = ('client',)
 
     def __str__(self):
-        return f'User: {self.client}'
+        return f'OrderID: {self.pk} - User: {self.client}'
 
 
 class OrderItem(models.Model):
@@ -34,4 +34,4 @@ class OrderItem(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return f'{self.order} - {self.product} - {self.price} - {self.quantity}'
+        return f'{self.order} - {self.product} - {self.quantity}pcs'

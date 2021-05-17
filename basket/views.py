@@ -1,10 +1,10 @@
-from datetime import datetime
-
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 
+import orders.orders
 from accounts.models import Profile
 from orders.models import Order
+
 from store.models import Product
 from .basket import Basket
 from orders.orders import *
@@ -17,6 +17,8 @@ def basket_summary(request):
 
 def basket_action(request):
     user = request.user
+    # orderID = Order.pk
+
     active_order = None
     if user.is_authenticated:
         profile = Profile.objects.get(user=user)
@@ -38,23 +40,23 @@ def basket_action(request):
         basket.add(product_data=product_data,
                    qty=product_qty)  # send/save the product data and quantity data into the session
 
-        if active_order:
-            add_item_to_order(active_order, product_id)
+        # if active_order:
+        #     add_item_to_order(active_order, product_id, product_qty)
 
     elif request.POST.get('action') == 'delete':
         product_id = int(request.POST.get('productid'))
         basket.update_quantity_or_remove_item(product_id=product_id)
 
-        if active_order:
-            remove_item_from_order(active_order, product_id)
+        # if active_order:
+        #     remove_item_from_order(active_order, product_id)
 
     elif request.POST.get('action') == 'update':
         product_id = int(request.POST.get('productid'))
         product_qty = int(request.POST.get('productqty'))
         basket.update_quantity_or_remove_item(product_id=product_id, qty=product_qty, update=True)
-
-        if active_order:
-            update_item_in_order(active_order, product_id)
+        #
+        # if active_order:
+        #     update_item_in_order(active_order, product_id)
 
     basket_qty = basket.__len__()
     basket_total = basket.get_total_price()
