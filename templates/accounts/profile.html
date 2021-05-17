@@ -9,11 +9,19 @@ body {
 }
 </style>
 
-<p>Here are the details:</p>
-<h3>{{ object.first_name }}</h3>
-<h3>{{ object.last_name }}</h3>
-<h3>{{ object.country }}</h3>
-
+<div class="d-flex justify-content-center align-items-center container mb-5">
+  <div class="mb-3 col-sm-3 card p-3 bg-light">
+      <div class="text-center">
+        <h3>Here are your details:</h3>
+        <br>
+        <h5>First name: {{ user.first_name }}</h5>
+        <h5>Last name: {{ user.last_name }}</h5>
+        <h5>Email: {{ user.email }}</h5>
+        <h5>Phone: {{ profile.phone }}</h5>
+        <h5>Country: {{ profile.country.name }}</h5>
+      </div>
+  </div>
+</div>
 
 
 {% endblock %}

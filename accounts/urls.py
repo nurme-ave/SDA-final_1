@@ -2,7 +2,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 from . import views
-from .views import CustomerPasswordChangeView, CustomerProfileView, CustomerLoginView, MySignUpView
+from .views import CustomerPasswordChangeView, CustomerLoginView, MySignUpView
 
 app_name = 'accounts'
 
@@ -12,5 +12,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('password_change/', CustomerPasswordChangeView.as_view(), name='password_change'),
     path('password_change_success/', views.customer_password_change_success, name='password_change_success'),
-    path('customer_detail/<pk>/', CustomerProfileView.as_view(), name='customer_detail'),
+    path('profile', views.customer_profile, name='profile'),
 ]

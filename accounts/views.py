@@ -1,6 +1,7 @@
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import generic
 from django.views.generic import CreateView, DetailView
 
 from accounts.forms import SignUpForm
@@ -74,6 +75,7 @@ def customer_password_change_success(request):
     return render(request, 'accounts/password_change_success.html')
 
 
-class CustomerProfileView(DetailView):
-    template_name = 'accounts/profile.html'
-    # model = Profile or User ?
+def customer_profile(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    return render(request, 'accounts/profile.html', {'profile': profile})

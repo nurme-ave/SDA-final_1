@@ -1,6 +1,9 @@
+
 from django.contrib.auth.forms import UserCreationForm
+
 from django import forms
 from django.db.transaction import atomic
+
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 
