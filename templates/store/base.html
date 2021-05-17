@@ -42,6 +42,12 @@
                             <a class="nav-link ms-4" aria-current="page" href="{% url 'accounts:profile' %}">Profile</a>
                         </li>
                         {% endif %}
+
+                         {% if user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link ms-4" aria-current="page" href="{% url 'accounts:order_history' %}">Order history</a>
+                        </li>
+                        {% endif %}
                     </ul>
 
                     <form class="d-inline-flex">
