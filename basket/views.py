@@ -31,10 +31,10 @@ def basket_action(request):
     basket = Basket(request)  # grab the session data
 
     if request.POST.get(
-            'action') == 'add':  # if the request received from the AJAX is a post request and action == post
+            'action') == 'add':  # if the request received from the AJAX is an add request and action == add
         product_id = int(request.POST.get('productid'))  # collect the product id
         product_qty = int(request.POST.get('productqty'))  # collect the product quantity
-        product_data = get_object_or_404(Product, id=product_id)  # get the product from the database by id
+        product_data = get_object_or_404(Product, id=product_id)  # get all the product data from the database by id
         basket.add(product_data=product_data,
                    qty=product_qty)  # send/save the product data and quantity data into the session
 

@@ -1,2 +1,26 @@
-Thank you!
-Your payment was processed successfully and your order has been placed!
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+body {
+  padding-top: 7.0rem;
+}
+</style>
+
+<div class="d-flex justify-content-center align-items-center container mb-5">
+  <div class="mb-3 col-sm-3 card p-3 bg-light">
+      <div class="text-center">
+        <h3>
+            Your payment has been processed successfully!
+            <br><br>
+            Thank you for the order!
+        </h3>
+      </div>
+      <br>
+      <a href="{% url 'store:all_products' %}" class="text-center">Back to the store</a>
+  </div>
+</div>
+
+{% endblock %}
