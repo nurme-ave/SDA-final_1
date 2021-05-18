@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<style>
+body {
+  padding-top: 7.0rem;
+}
+</style>
+
+    <div>
+        <center><h1>You searched for "{{ searched }}"</h1></center>
+        <br>
+    </div>
+<div class="d-flex justify-content-center align-items-center container mb-5">
+    {% if searched %}
+    <div class="mb-3 col-sm-7 card p-3 bg-light">
+        <ul class="list-group list-group-flush text-center">
+            {% for product in search_products %}
+                <li class="list-group-item">
+                    <a href="{{ product.get_absolute_url }}" class="list-group-item-action active" aria-current="true">
+                        {{ product }} - €{{ product.price }} -> Click for details
+                    </a>
+                </li>
+            {% empty %}
+            Your search did not return any results unfortunately :-)
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% endif %}
+</div>
+
+{% endblock %}

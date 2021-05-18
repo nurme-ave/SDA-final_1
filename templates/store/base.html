@@ -45,13 +45,19 @@
 
                          {% if user.is_authenticated %}
                         <li class="nav-item active">
-                            <a class="nav-link ms-4" aria-current="page" href="{% url 'accounts:order_history' %}">Order history</a>
+                            <a class="nav-link ms-4" aria-current="page" href="{% url 'accounts:order_history' %}">Orders</a>
                         </li>
                         {% endif %}
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled ms-5 text-danger" href="#" tabindex="-1" aria-disabled="true">
+                                <b><em>FREE SHIPPING!</em></b></a>
+                        </li>
                     </ul>
 
-                    <form class="d-inline-flex">
-                        <input class="form-control me-2 ms-5" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-inline-flex" method="POST" action="{% url 'store:search_in_products' %}">
+                        {% csrf_token %}
+                        <input class="form-control me-2 ms-5" type="search" placeholder="Search in products..." aria-label="Search" name="searched">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
 

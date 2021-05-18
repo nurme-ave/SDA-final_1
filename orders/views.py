@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from accounts.models import Profile
@@ -7,6 +8,7 @@ from basket.basket import Basket
 from .models import Order
 
 
+@login_required
 def order_placed(request):
     """After the user checks out (clicks on 'Place order') we make changes to the attributes of active order."""
     basket = Basket(request)

@@ -21,7 +21,7 @@ class Order(models.Model):
     order_status = models.CharField(max_length=2, choices=ORDER_STATUS_CHOICES, default='NP')
 
     class Meta:
-        ordering = ('client',)
+        ordering = ('-id',)
 
     def __str__(self):
         return f'OrderID: {self.pk} - User: {self.client}'
