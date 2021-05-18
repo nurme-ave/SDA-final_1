@@ -11,7 +11,7 @@ body {
 
 <div class="d-flex justify-content-center align-items-center container mb-5">
   <div class="mb-3 col-sm-4 card p-3 bg-light">
-      <div >
+      <div class="text-center">
           <h4>Here is your order history:</h4>
           <hr>
           {% for order in orders %}
@@ -20,20 +20,19 @@ body {
                 <h6>Date: {{ order.order_date }}</h6>
                 <h6>Invoice total: €{{ order.invoice_total }}</h6>
                 <h6>Status: {{ order.get_order_status_display }}</h6>
-                -------------
-                <!--This part down here does not display quite as it should (except the order number which is correct)-->
-                {% for item in items %}
-                    <h6>Order number: {{ order.pk }}</h6>
-                    <h6>Item: {{ item.product }}</h6>
-                    <h6>Price: {{ item.product.price }} - Quantity: {{ item.quantity }}</h6>
-                    ------
-                {% endfor %}
+<!--                -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--                -->
+<!--                {% for item in items %}-->
+<!--                    <h6>Order number: {{ order.pk }}</h6>-->
+<!--                    <h6>Item: {{ item.product }}</h6>-->
+<!--                    <h6>Price: {{ item.product.price }} - Quantity: {{ item.quantity }}</h6>-->
+<!--                    &#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--                {% endfor %}-->
           <br>
           <hr>
           {% endfor %}
       </div>
   </div>
 </div>
-
 
 {% endblock %}

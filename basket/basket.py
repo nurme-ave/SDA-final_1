@@ -69,9 +69,10 @@ class Basket:
         return sum(item['qty'] for item in self.basket.values())  # iterate through the basket and add quantities up
 
     def get_total_price(self):
+        """Get the total price of the basket."""
         return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
 
     def clear(self):
-        # Remove basket from session
+        """Remove basket from session."""
         del self.session['session_key']
         self.save()

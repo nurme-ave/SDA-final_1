@@ -23,3 +23,15 @@ def search_in_products(request):
         searched = request.POST['searched']
         search_products = Product.objects.filter(title__contains=searched)
         return render(request, 'store/search.html', {'searched': searched, 'search_products': search_products})
+
+
+def about_us(request):
+    return render(request, 'store/about_us.html')
+
+
+def contact_us(request):
+    return render(request, 'store/contact_us.html')
+
+
+def personalized_offers(request):
+    return render(request, 'store/personalized-offers.html')

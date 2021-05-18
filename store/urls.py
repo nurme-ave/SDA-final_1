@@ -22,5 +22,8 @@ urlpatterns = [
     path('', views.all_products, name="all_products"),
     path('item/<slug:slug>/', views.product_detail, name="product_detail"),
     path('shop/<slug:category_slug>/', views.category_list, name="category_list"),
-    path('search_in_products/', views.search_in_products, name='search_in_products')
+    path('search_in_products/', views.search_in_products, name='search_in_products'),
+    path('about_us', views.about_us, name='about_us'),
+    path('contact_us', views.contact_us, name='contact_us'),
+    path('personalized_offers', views.personalized_offers, name='personalized_offers')
 ]

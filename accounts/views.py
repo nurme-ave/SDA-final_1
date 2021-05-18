@@ -86,9 +86,9 @@ def order_history(request):
     profile = Profile.objects.get(user=user)
     completed_orders = Order.objects.filter(client=profile, active_basket=False).order_by('-id')
 
-    for order in completed_orders:
-        items = OrderItem.objects.filter(order=order.pk)
-        for item in items:
-            print(f'{order.pk} - {item.product} - {item.quantity}pcs - €{item.product.price}')
+    # for order in completed_orders:
+    #     items = OrderItem.objects.filter(order=order.pk)
+    #     for item in items:
+    #         print(f'{order.pk} - {item.product} - {item.quantity}pcs - €{item.product.price}')
 
-    return render(request, 'accounts/order_history.html', {'orders': completed_orders, 'items': items})
+    return render(request, 'accounts/order_history.html', {'orders': completed_orders})

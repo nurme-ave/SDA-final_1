@@ -1,11 +1,8 @@
 {% extends "store/base.html" %}
 {% load static %}
 
-{% block title %}
-  {{ product.name }}
-{% endblock %}
-
 {% block content %}
+
 <div class="container">
     <main class="pt-5 mb-5">
         <div class="row g-3">
@@ -45,12 +42,13 @@
                                     Add to basket
                                 </button>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <br>
+        <p class="text-end"><a href="{% url 'store:all_products' %}">Back to the store</a></p>
     </main>
 </div>
 
