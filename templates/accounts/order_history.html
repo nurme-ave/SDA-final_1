@@ -14,20 +14,19 @@ body {
       <div class="text-center">
           <h4>Here is your order history:</h4>
           <hr>
-          {% for order in orders %}
+          {% for order, items in orders %}
                 <br>
                 <h5>Order number: {{ order.pk }}</h5>
                 <h6>Date: {{ order.order_date }}</h6>
                 <h6>Invoice total: €{{ order.invoice_total }}</h6>
                 <h6>Status: {{ order.get_order_status_display }}</h6>
-<!--                -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-<!--                -->
-<!--                {% for item in items %}-->
-<!--                    <h6>Order number: {{ order.pk }}</h6>-->
-<!--                    <h6>Item: {{ item.product }}</h6>-->
-<!--                    <h6>Price: {{ item.product.price }} - Quantity: {{ item.quantity }}</h6>-->
-<!--                    &#45;&#45;&#45;&#45;&#45;&#45;-->
-<!--                {% endfor %}-->
+                -------------
+                <h5>Order Items:</h5>
+                {% for item in items %}
+                    <h6>Item: {{ item.product }}</h6>
+                    <h6>Price: {{ item.product.price }} - Quantity: {{ item.quantity }}</h6>
+                    ------
+                {% endfor %}
           <br>
           <hr>
           {% endfor %}
